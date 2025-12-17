@@ -161,6 +161,8 @@ for i in range(5):
 
 - You will see the numbers 0–4 printed in the server terminal as they arrive.
 
+Sucess! you have sent messeges from one program to another via OSC protocol.
+
 ----
 ### NOTES
 
