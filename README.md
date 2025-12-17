@@ -51,8 +51,10 @@ An **OSC client** is a program that **sends** OSC messages to a server.
 
 First, activate your virtual environment.
 
-        cd Desktop
-        source venv/bin/activate
+```
+cd Desktop
+source venv/bin/activate
+```
 
 Read more [here](https://github.com/kingston-hackSpace/Virtual-Environments__RaspberryPi).
 
@@ -65,56 +67,64 @@ Read more [here](https://pypi.org/project/python-osc/)
 
 - Open your terminal, and once inside your venv, type:
 
-        pip install python-osc
+`pip install python-osc`
 
 ----
 ### Create a simple OSC Server __ Python file
 
 - Go to the Desktop and create an OSC directory
 
-        cd Desktop
-        mkdir -p OSC
-        cd OSC
+```
+cd Desktop
+mkdir -p OSC
+cd OSC
+```
 
 - Create a new Python file called osc_server.py:
 
-        nano osc_server.py
+`nano osc_server.py`
 
 - Paste the following code into the editor:
 
-        from pythonosc import dispatcher
-        from pythonosc import osc_server
+```python
+from pythonosc import dispatcher
+from pythonosc import osc_server
         
-        def print_message(address, *args):
-            print(f"Received {args} from {address}")
+def print_message(address, *args):
+    print(f"Received {args} from {address}")
         
-        disp = dispatcher.Dispatcher()
-        disp.map("/test", print_message)
+disp = dispatcher.Dispatcher()
+disp.map("/test", print_message)
         
-        server = osc_server.ThreadingOSCUDPServer(
-            ("127.0.0.1", 5005),
-            disp
-        )
+server = osc_server.ThreadingOSCUDPServer(
+    ("127.0.0.1", 5005),
+    disp
+)
         
-        print("OSC Server is running on {}:{}".format(*server.server_address))
-        print("Waiting for messages...")
+print("OSC Server is running on {}:{}".format(*server.server_address))
+print("Waiting for messages...")
+```
         
-        server.serve_forever()
+server.serve_forever()
         
   - Save and exit:
 
-        Press CTRL + O → Enter
+```
+Press CTRL + O → Enter
 
-        Press CTRL + X
+Press CTRL + X
+```
 
 - Test that you can run your osc_server.py
 
-        python3 osc_server.py
+`python3 osc_server.py`
 
 - The terminal will display:
 
-        OSC Server is running on 127.0.0.1:5005
-        Waiting for messages...
+```
+OSC Server is running on 127.0.0.1:5005
+Waiting for messages...
+```
 
 - The server is now listening for OSC messages.
 
@@ -123,25 +133,27 @@ Read more [here](https://pypi.org/project/python-osc/)
 
 - In the same OSC folder, create a new file:
 
-        nano osc_client.py
+`nano osc_client.py`
 
 - Paste the following code:
 
-        from pythonosc import udp_client
-        import time
+```
+from pythonosc import udp_client
+import time
 
-        client = udp_client.SimpleUDPClient("127.0.0.1", 5005)
+client = udp_client.SimpleUDPClient("127.0.0.1", 5005)
 
-        for i in range(5):
-          client.send_message("/test", i)
-          print(f"Sent {i} to /test")
-          time.sleep(1)
+for i in range(5):
+    client.send_message("/test", i)
+    print(f"Sent {i} to /test")
+    time.sleep(1)
+```
 
 - Save and exit (CTRL + O, Enter, CTRL + X).
 
 - Run the client while the server is running in another terminal:
 
-        python3 osc_client.py
+`python3 osc_client.py`
 
 - You will see the numbers 0–4 printed in the server terminal as they arrive.
 
