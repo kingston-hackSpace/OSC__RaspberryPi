@@ -1,8 +1,8 @@
-# OSC Communication in Python __ RaspberryPi
+# OSC Communication in Python __ on RaspberryPi
 
 ***OSC (Open Sound Control)*** is a network-based messaging protocol used to transmit numeric and textual data between devices or software processes.
 
-Like it’s older sibling - MIDI, OSC was originally designed for music performance contexts, but it is now widely used across many disciplies. Just a few examples of softwares with OSC capability include Ableton Live, Reaper, Max, Pure Data, QLab and Unreal Engine.
+Like it’s older sibling - MIDI, OSC was originally designed for music performance contexts, but it is now widely used across many disciplines. Just a few examples of software with OSC capability include Ableton Live, Reaper, Max, Pure Data, QLab and Unreal Engine.
 
 Read more about OSC [here](https://itp.nyu.edu/networks/explanations/open-sound-control/)
 
@@ -161,7 +161,7 @@ for i in range(5):
 
 - You will see the numbers 0–4 printed in the server terminal as they arrive.
 
-Sucess! you have sent messeges from one program to another via OSC protocol.
+Success! you have sent messages from one program to another via OSC protocol.
 
 ----
 ### NOTES
