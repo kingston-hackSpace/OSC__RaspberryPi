@@ -131,9 +131,13 @@ Waiting for messages...
 ----
 ### Create a simple OSC Client __ Python file
 
-- In the same OSC folder, create a new file:
+- Without closing the previous Terminal window, open a new terminal window and type:
 
-`nano osc_client.py`
+```
+cd Desktop
+source venv/bin/activate
+nano osc_client.py
+```
 
 - Paste the following code:
 
