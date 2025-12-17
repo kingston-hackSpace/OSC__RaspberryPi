@@ -99,8 +99,8 @@ def print_message_2(osc_address, *args):
 
 #create a dispatcher that will route incoming messages from the osc address (/test) to the function (print_message)
 disp = dispatcher.Dispatcher()
-disp.map("/test", print_message_1)
-disp.map("/test", print_message_2)
+disp.map("/test1", print_message_1)
+disp.map("/test2", print_message_2)
 
 #create the server to listen to messages        
 server = osc_server.ThreadingOSCUDPServer(
