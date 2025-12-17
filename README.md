@@ -154,10 +154,18 @@ import time
 
 client = udp_client.SimpleUDPClient("127.0.0.1", 5005)
 
+client.send_message("/test1", TEST 1 :)
+
 for i in range(5): #for loop
     client.send_message("/test1", i)
     print(f"Sent {i} to /test1")
     time.sleep(1)
+
+time.sleep(2)
+
+client.send_message("/test2", TEST 1 :)
+
+time.sleep(2)
 
 for j in range(5):
     client.send_message("/test2", j)
@@ -199,3 +207,7 @@ Success! you have sent messages from one program to another via OSC protocol.
 - *args : accept any data values (numbers, text, or multiple values)
 
 - UDP (User Datagram Protocol) is a transport protocol used by OSC to send raw bytes from one device/program to another. OSC then interprets and organizes these values so we can use them in a more human-frienly format.
+
+- The client uses the *time* library to control the timing of actions.
+
+- time.sleep(1) : pauses the program for 1 second before sending the next message.
