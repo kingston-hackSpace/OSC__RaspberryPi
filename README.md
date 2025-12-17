@@ -171,7 +171,17 @@ Success! you have sent messages from one program to another via OSC protocol.
 
 - Two terminals are needed: one for the server, one for the client.
 
-- 127.0.0.1 = Address of a local machine. If you want to run the client on another Pi, replace with the server’s IP.
+- 127.0.0.1 = IP address of a local machine (always means this computer / localhost). If you want to run the client on another Pi, replace with the server’s IP.
+
+- /test = OSC address. In other words, it means the address for a OSC protocol. It behave like a channel (or multiple channels). For example:
+  
+          /test → testing messages
+
+          /volume → adjust volume
+
+          /play/note → play a note
+
+          /stop → stop playback
 
 - The port (5005) must match in both scripts. The port will be the 'listener' of messages. 
 
@@ -179,4 +189,4 @@ Success! you have sent messages from one program to another via OSC protocol.
 
 - *args : accept any data values (numbers, text, or multiple values)
 
-- The OSC address (/test) is like a channel; the server reacts only to messages sent to it.
+- UDP (User Datagram Protocol) is a transport protocol used by OSC to send raw bytes from one device/program to another. OSC then interprets and organizes these values so we can use them in a more human-frienly format.
