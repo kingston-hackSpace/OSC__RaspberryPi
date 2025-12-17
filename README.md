@@ -51,6 +51,9 @@ An **OSC client** is a program that **sends** OSC messages to a server.
 
 First, activate your virtual environment.
 
+        cd Desktop
+        source venv/bin/activate
+
 Read more [here](https://github.com/kingston-hackSpace/Virtual-Environments__RaspberryPi).
 
 ----
@@ -81,19 +84,23 @@ Read more [here](https://pypi.org/project/python-osc/)
 
         from pythonosc import dispatcher
         from pythonosc import osc_server
-
+        
         def print_message(address, *args):
-        print(f"Received {args} from {address}")
-
-        dispatcher = dispatcher.Dispatcher()
-        dispatcher.map("/test", print_message)
-
-        server = osc_server.ThreadingOSCUDPServer(("127.0.0.1", 5005), dispatcher)
+            print(f"Received {args} from {address}")
+        
+        disp = dispatcher.Dispatcher()
+        disp.map("/test", print_message)
+        
+        server = osc_server.ThreadingOSCUDPServer(
+            ("127.0.0.1", 5005),
+            disp
+        )
+        
         print("OSC Server is running on {}:{}".format(*server.server_address))
         print("Waiting for messages...")
-
-         server.serve_forever()
-
+        
+        server.serve_forever()
+        
   - Save and exit:
 
         Press CTRL + O → Enter
