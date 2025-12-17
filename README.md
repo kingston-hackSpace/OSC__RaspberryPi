@@ -91,12 +91,16 @@ from pythonosc import dispatcher
 from pythonosc import osc_server
 
 #create a function to print incoming messages        
-def print_message(osc_address, *args): 
+def print_message_1(osc_address, *args): 
+    print(f"Received {args} from {osc_address}")
+
+def print_message_2(osc_address, *args): 
     print(f"Received {args} from {osc_address}")
 
 #create a dispatcher that will route incoming messages from the osc address (/test) to the function (print_message)
 disp = dispatcher.Dispatcher()
-disp.map("/test", print_message)
+disp.map("/test", print_message_1)
+disp.map("/test", print_message_2)
 
 #create the server to listen to messages        
 server = osc_server.ThreadingOSCUDPServer(
