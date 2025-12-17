@@ -89,15 +89,18 @@ cd OSC
 ```python
 from pythonosc import dispatcher
 from pythonosc import osc_server
-        
-def print_message(address, *args):
+
+#create a function to print incoming messages        
+def print_message(address, *args): #*args : accept any data values ((numbers, text, or multiple values))
     print(f"Received {args} from {address}")
-        
+
+#create a dispatcher that will route the incoming messages from the address (/test) to the function print_message
 disp = dispatcher.Dispatcher()
 disp.map("/test", print_message)
-        
+
+#create the server to listen to messages        
 server = osc_server.ThreadingOSCUDPServer(
-    ("127.0.0.1", 5005),
+    ("127.0.0.1", 5005), #127.0.0.1 is the address for “this computer only”, 5005 is the port in use
     disp
 )
         
