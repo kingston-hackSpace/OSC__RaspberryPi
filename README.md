@@ -91,16 +91,16 @@ from pythonosc import dispatcher
 from pythonosc import osc_server
 
 #create a function to print incoming messages        
-def print_message(address, *args): #*args : accept any data values ((numbers, text, or multiple values))
+def print_message(address, *args): 
     print(f"Received {args} from {address}")
 
-#create a dispatcher that will route the incoming messages from the address (/test) to the function print_message
+#create a dispatcher that will route incoming messages from the address (/test) to the function (print_message)
 disp = dispatcher.Dispatcher()
 disp.map("/test", print_message)
 
 #create the server to listen to messages        
 server = osc_server.ThreadingOSCUDPServer(
-    ("127.0.0.1", 5005), #127.0.0.1 is the address for “this computer only”, 5005 is the port in use
+    ("127.0.0.1", 5005),
     disp
 )
         
@@ -171,8 +171,12 @@ Success! you have sent messages from one program to another via OSC protocol.
 
 - Two terminals are needed: one for the server, one for the client.
 
-- 127.0.0.1 = local machine. If you want to run the client on another Pi, replace with the server’s IP.
+- 127.0.0.1 = Address of a local machine. If you want to run the client on another Pi, replace with the server’s IP.
 
-- The port (5005) must match in both scripts.
+- The port (5005) must match in both scripts. The port will be the 'listener' of messages. 
+
+- args : accept one data value
+
+- *args : accept any data values (numbers, text, or multiple values)
 
 - The OSC address (/test) is like a channel; the server reacts only to messages sent to it.
