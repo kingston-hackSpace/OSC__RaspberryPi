@@ -154,12 +154,14 @@ import time
 
 client = udp_client.SimpleUDPClient("127.0.0.1", 5005)
 
+#Count from 0 to 4
 for i in range(5): #for loop
     client.send_message("/test1", i)
     print(f"Sent {i} to /test1")
     time.sleep(1)
 
-for j in range(5):
+#Count from 5 to 14
+for j in range(5-15):
     client.send_message("/test2", j)
     print(f"Sent {j} to /test2")
     time.sleep(1)
