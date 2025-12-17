@@ -91,10 +91,10 @@ from pythonosc import dispatcher
 from pythonosc import osc_server
 
 #create a function to print incoming messages        
-def print_message(address, *args): 
-    print(f"Received {args} from {address}")
+def print_message(osc_address, *args): 
+    print(f"Received {args} from {osc_address}")
 
-#create a dispatcher that will route incoming messages from the address (/test) to the function (print_message)
+#create a dispatcher that will route incoming messages from the osc address (/test) to the function (print_message)
 disp = dispatcher.Dispatcher()
 disp.map("/test", print_message)
 
